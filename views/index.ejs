@@ -1,0 +1,53 @@
+<%- include('parts/header') %>
+    <%- include('parts/navbar') %>
+
+        <div class="container">
+            <!-- Online friends section, if needed -->
+            <div id="onlineFriends">
+                <!-- Placeholder for online friends -->
+            </div>
+
+            <!-- New post section -->
+            <div class="central-meta item">
+                <div class="new-postbox">
+                    <div class="newpst-input">
+                        <form action="/create" method="POST">
+                            <textarea name="content" rows="2" id="content"
+                                placeholder="What's on your mind?"></textarea>
+                            <div class="attachments">
+                                <button type="submit" class="btn btn-primary">Publish</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Timeline posts section -->
+            <div id="timelinePosts">
+                <% posts.forEach(post=> { %>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= post.userId.username %> posted on <%= post.timestamp %>
+                            </h5>
+                            <p class="card-text">
+                                <%= post.content %>
+                            </p>
+                            <!-- Additional UI for likes, comments, shares, etc. -->
+                            <a href="#" class="card-link">Like</a>
+                            <a href="#" class="card-link">Comment</a>
+                            <a href="#" class="card-link">Share</a>
+                        </div>
+                    </div>
+                    <% }); %>
+            </div>
+        </div>
+
+        <%- include('parts/scripts') %>
+            <script src="/js/sockets/init.js"></script>
+            <script src="/js/sockets/home.js"></script>
+            </body>
+
+            </html>
