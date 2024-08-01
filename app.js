@@ -6,7 +6,7 @@ const session = require("express-session");
 const SessionStore = require("connect-mongodb-session")(session);
 const flash = require("connect-flash");
 const socketIO = require("socket.io");
-const bodyParser = require('body-parser'); // Add body-parser
+const bodyParser = require('body-parser'); 
 const connectDB = require('./controllers/database');
 const DB_URL = process.env.MONGODB_URI
 
